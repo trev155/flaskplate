@@ -33,14 +33,25 @@ db.session.commit()
 print(Post.query.all())
 
 # Selections
+x = User.query.filter_by(name="bob").first_or_404()
+print(x)
 
-# Updates
-
-# Deletions
-
-# Note how we can access relationship data
+# Selection of relationship data
 usr = User.query.filter_by(name="joe").first_or_404()
 print(usr.posts)
 
 pst = Post.query.filter_by(title="Woah!").first_or_404()
 print(pst.user)
+
+# Updates
+x.name = "GREG"
+db.session.add(x)
+db.session.commit()
+print(User.query.all())
+
+# Deletions
+y = User.query.filter_by(name="alice").first_or_404()
+db.session.delete(y)
+db.session.commit()
+print(User.query.all())
+

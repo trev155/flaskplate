@@ -30,7 +30,6 @@ python3 -m venv venv
 pip install --upgrade pip
 pip install flask
 pip install flask-sqlalchemy
-pip freeze > requirements.txt
 ```
 
 To run, use the `run.py` script:
@@ -41,5 +40,4 @@ See `examples.py` and run through the lines.
 
 ## Up Next
 - routes
-- documentation
 - advanced usage
