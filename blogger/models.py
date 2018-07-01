@@ -17,7 +17,7 @@ class Post(db.Model):
     body = db.Column(db.Text, nullable=False)
     pub_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     posted_by = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    users = db.relationship("User", backref=db.backref("posts", lazy=True))
+    user = db.relationship("User", backref=db.backref("posts", lazy=True))
 
     def __repr__(self):
         return "[Post: %s]" % self.title
