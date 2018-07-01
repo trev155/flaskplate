@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block body %}
 all users
 
 {% for result in users %}
@@ -5,3 +8,5 @@ all users
     <li>{{ result.name }}</li>
 </ul>
 {% endfor %}
+
+{% endblock %}

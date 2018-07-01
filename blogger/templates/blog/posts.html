@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block body %}
 POSTS
 
 {% for result in posts %}
@@ -6,3 +9,5 @@ POSTS
     {{ result.body }}
 </ul>
 {% endfor %}
+
+{% endblock %}
