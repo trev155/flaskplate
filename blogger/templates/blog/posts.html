@@ -1,0 +1,8 @@
+POSTS
+
+{% for result in posts %}
+<ul>
+    <li>{{ result.title }}</li>
+    {{ result.body }}
+</ul>
+{% endfor %}

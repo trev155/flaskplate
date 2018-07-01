@@ -15,3 +15,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 # -- database setup
 db = SQLAlchemy(app)
 db.create_all()
+
+# -- register blueprints (and their corresponding routes)
+from . import blog
+app.register_blueprint(blog.bp)
+app.add_url_rule("/", endpoint="index")
