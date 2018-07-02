@@ -3,4 +3,23 @@
 {% block body %}
 Hello WORLD!
 
+<h2>USERS</h2>
+{% for result in users %}
+<p>
+    <ul>
+        <li>{{ result.name }}</li>
+    </ul>
+</p>
+{% endfor %}
+
+<h2>POSTS</h2>
+{% for result in posts %}
+<p>
+    <ul>
+        <li>{{ result.title }}</li>
+            {{ result.body }}
+    </ul>
+</p>
+{% endfor %}
+
 {% endblock %}

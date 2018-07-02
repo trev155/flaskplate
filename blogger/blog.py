@@ -7,22 +7,9 @@ bp = Blueprint("blog", __name__)
 
 @bp.route("/")
 def index():
-    return render_template("blog/index.html")
-
-
-@bp.route("/user", methods=("GET", "POST"))
-def user():
-    if request.method == "POST":
-        # add user
-        name = request.form["name"]
-        email = request.form["email"]
-        user = User(name=name, email=email)
-        db.session.add(user)
-        db.session.commit()
-        return "OK"
-
     users = User.query.all()
-    return render_template("blog/users.html", users=users)
+    posts = Post.query.all()
+    return render_template("blog/index.html", users=users, posts=posts)
 
 
 @bp.route("/post", methods=("GET", "POST"))
@@ -37,5 +24,6 @@ def post():
         db.session.commit()
         return "OK"
 
-    posts = Post.query.all()
-    return render_template("blog/posts.html", posts=posts)
+    if request.method == "GET":
+        posts = Post.query.all()
+        return render_template("blog/posts.html", posts=posts)

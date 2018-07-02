@@ -11,9 +11,9 @@ db.drop_all()
 db.create_all()
 
 # Create and add users
-u1 = User(name="bob", email="bob@gmail.com")
-u2 = User(name="alice", email="alice@gmail")
-u3 = User(name="joe", email="woah@hotmail.com")
+u1 = User(name="bob", password="hello")
+u2 = User(name="alice", password="hey")
+u3 = User(name="joe", password="okay!")
 db.session.add(u1)
 db.session.add(u2)
 db.session.add(u3)

@@ -16,7 +16,19 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 db = SQLAlchemy(app)
 db.create_all()
 
+# -- sqlite foreign key enforcement
+from sqlalchemy.engine import Engine
+from sqlalchemy import event
+
+@event.listens_for(Engine, "connect")
+def set_sqlite_pragma(dbapi_connection, connection_record):
+    cursor = dbapi_connection.cursor()
+    cursor.execute("PRAGMA foreign_keys=ON")
+    cursor.close()
+
 # -- register blueprints (and their corresponding routes)
+from . import auth
+app.register_blueprint(auth.bp)
+
 from . import blog
 app.register_blueprint(blog.bp)
-app.add_url_rule("/", endpoint="index")

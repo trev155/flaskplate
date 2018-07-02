@@ -21,6 +21,9 @@ SQLite and Flask-SQLAlchemy:
 - https://gehrcke.de/2015/05/in-memory-sqlite-database-and-flask-a-threading-trap/
 - you have to set this config as some actual location (eg. in this repo)
 
+SQLite does not enforce foreign key constraints by default:
+https://stackoverflow.com/questions/31794195/how-to-correctly-add-foreign-key-constraints-to-sqlite-db-using-sqlalchemy
+
 
 ## Usage
 After cloning, start a virtual environment:
@@ -38,6 +41,5 @@ To run, use the `run.py` script:
 ### Backend - examples
 See `examples.py` and run through the lines.
 
-## Up Next
-- routes
-- advanced usage
+## Todo
+- login / logout functionality
