@@ -11,9 +11,9 @@ db.drop_all()
 db.create_all()
 
 # Create and add users
-u1 = User(name="bob", password="hello")
-u2 = User(name="alice", password="hey")
-u3 = User(name="joe", password="okay!")
+u1 = User("bob", "hello")
+u2 = User("alice", "hey")
+u3 = User("joe", "okay!")
 db.session.add(u1)
 db.session.add(u2)
 db.session.add(u3)
@@ -54,4 +54,3 @@ y = User.query.filter_by(name="alice").first_or_404()
 db.session.delete(y)
 db.session.commit()
 print(User.query.all())
-

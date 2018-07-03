@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, abort
-from werkzeug.security import check_password_hash, generate_password_hash
+from flask_login import login_user, logout_user, login_required
 from .models import User
 from . import db
 
@@ -11,7 +11,7 @@ def register():
     if request.method == "POST":
         # add user
         name = request.form["name"]
-        password = generate_password_hash(request.form["password"])
+        password = request.form["password"]
         user = User(name=name, password=password)
         db.session.add(user)
         db.session.commit()
@@ -26,10 +26,26 @@ def login():
         # verify password
         name = request.form["name"]
         password = request.form["password"]
-        user = User.query.filter_by(name=name).first_or_404()
-        if not check_password_hash(user.password, password):
-            abort(404)
+        user = User.query.filter_by(name=name).first()
+
+        if user is None:
+            return "Name not found", 404
+        if not user.check_password(password):
+            return "Incorrect Password", 404
+
+        # success - login user
+        login_user(user)
+        user.authenticated = True
+        db.session.add(user)
+        db.session.commit()
         return "OK"
 
     if request.method == "GET":
         return render_template("auth/login.html")
+
+
+@bp.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return "Logged Out!"

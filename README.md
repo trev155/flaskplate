@@ -24,6 +24,9 @@ SQLite and Flask-SQLAlchemy:
 SQLite does not enforce foreign key constraints by default:
 https://stackoverflow.com/questions/31794195/how-to-correctly-add-foreign-key-constraints-to-sqlite-db-using-sqlalchemy
 
+Flask-Login - good example:  
+https://www.youtube.com/watch?v=2dEM-s3mRLE
+
 
 ## Usage
 After cloning, start a virtual environment:

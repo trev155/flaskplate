@@ -7,6 +7,7 @@ app = Flask(__name__, instance_relative_config=True)
 
 # -- configs
 app.config["ENV"] = "development"
+app.config["SECRET_KEY"] = "DEV"
 app.config["DEBUG"] = True
 # point this to the current directory
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(os.path.dirname(os.path.abspath(__file__))) + "/app.db"
@@ -20,11 +21,24 @@ db.create_all()
 from sqlalchemy.engine import Engine
 from sqlalchemy import event
 
+
 @event.listens_for(Engine, "connect")
 def set_sqlite_pragma(dbapi_connection, connection_record):
     cursor = dbapi_connection.cursor()
     cursor.execute("PRAGMA foreign_keys=ON")
     cursor.close()
+
+# -- Flask-login
+from .models import User
+from flask_login import LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
 
 # -- register blueprints (and their corresponding routes)
 from . import auth
