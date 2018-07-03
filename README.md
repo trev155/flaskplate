@@ -36,6 +36,7 @@ python3 -m venv venv
 pip install --upgrade pip
 pip install flask
 pip install flask-sqlalchemy
+pip install flask-login
 ```
 
 To run, use the `run.py` script:
