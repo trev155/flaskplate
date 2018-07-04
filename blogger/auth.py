@@ -1,5 +1,5 @@
-from flask import Blueprint, request, render_template, abort
-from flask_login import login_user, logout_user, login_required
+from flask import Blueprint, request, render_template
+from flask_login import login_user, logout_user, login_required, current_user
 from .models import User
 from . import db
 
@@ -35,9 +35,6 @@ def login():
 
         # success - login user
         login_user(user)
-        user.authenticated = True
-        db.session.add(user)
-        db.session.commit()
         return "OK"
 
     if request.method == "GET":
@@ -47,5 +44,6 @@ def login():
 @bp.route("/logout")
 @login_required
 def logout():
+    print("Now logging out user:", current_user)
     logout_user()
     return "Logged Out!"

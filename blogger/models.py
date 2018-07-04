@@ -12,14 +12,9 @@ class User(UserMixin, db.Model):
     def __init__(self, name, password):
         self.name = name
         self.password = generate_password_hash(password)
-        self.authenticated = False
-
-    def __repr__(self):
-        return "[name: %s]" % self.name
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
 
 
 class Post(db.Model):
@@ -30,5 +25,7 @@ class Post(db.Model):
     posted_by = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     user = db.relationship("User", backref=db.backref("posts", lazy=True))
 
-    def __repr__(self):
-        return "[Post: %s]" % self.title
+    def __init__(self, title, body, posted_by):
+        self.title = title
+        self.body = body
+        self.posted_by = posted_by

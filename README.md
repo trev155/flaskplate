@@ -5,7 +5,7 @@ It shows most of the basics in Flask, and it provides a guide for project struct
 Of course more could be added to this, perhaps as time goes on.
 
 ## Information
-Using Python 3.6, Flask 1.0.2, Flask-SQLAlchemy 2.3.2. 
+Using Python 3.6, Flask 1.0.2, Flask-SQLAlchemy 2.3.2, Flask-Login 0.4.1
 
 Info on project organization:
 http://exploreflask.com/en/latest/organizing.html
@@ -27,6 +27,8 @@ https://stackoverflow.com/questions/31794195/how-to-correctly-add-foreign-key-co
 Flask-Login - good example:  
 https://www.youtube.com/watch?v=2dEM-s3mRLE
 
+Flask-Login - get the current user (logged in):
+`from flask_login import current_user`
 
 ## Usage
 After cloning, start a virtual environment:
@@ -45,4 +47,4 @@ To run, use the `run.py` script:
 See `examples.py` and run through the lines.
 
 ## Todo
-- login / logout functionality
+- ???

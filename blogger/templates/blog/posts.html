@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block body %}
+Hello WORLD posts
+
+<h2>POSTS</h2>
+{% for result in posts %}
+<p>
+    <ul>
+        <li>{{ result.title }}</li>
+            {{ result.body }}
+    </ul>
+</p>
+{% endfor %}
+
+{% endblock %}

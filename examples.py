@@ -1,7 +1,6 @@
 """
 Can run through these lines at a time in a python console.
 """
-
 from blogger.models import *
 from blogger import db
 
@@ -11,9 +10,9 @@ db.drop_all()
 db.create_all()
 
 # Create and add users
-u1 = User("bob", "hello")
-u2 = User("alice", "hey")
-u3 = User("joe", "okay!")
+u1 = User(name="bob", password="hello")
+u2 = User(name="alice", password="hey")
+u3 = User(name="joe", password="okay!")
 db.session.add(u1)
 db.session.add(u2)
 db.session.add(u3)
