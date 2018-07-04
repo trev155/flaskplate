@@ -1,8 +1,7 @@
 # flaskplate
-This is a template web application that uses Flask and Flask-SQLAlchemy.
+This is a template web application in Flask.
 
-It shows most of the basics in Flask, and it provides a guide for project structure.
-Of course more could be added to this, perhaps as time goes on.
+It provides a nice guide, as well as for project structure.
 
 ## Information
 Using Python 3.6, Flask 1.0.2, Flask-SQLAlchemy 2.3.2, Flask-Login 0.4.1
