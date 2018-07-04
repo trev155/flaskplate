@@ -5,7 +5,7 @@ It shows most of the basics in Flask, and it provides a guide for project struct
 Of course more could be added to this, perhaps as time goes on.
 
 ## Information
-Using Python 3.6, Flask 1.0.2, Flask-SQLAlchemy 2.3.2. 
+Using Python 3.6, Flask 1.0.2, Flask-SQLAlchemy 2.3.2, Flask-Login 0.4.1
 
 Info on project organization:
 http://exploreflask.com/en/latest/organizing.html
@@ -21,6 +21,14 @@ SQLite and Flask-SQLAlchemy:
 - https://gehrcke.de/2015/05/in-memory-sqlite-database-and-flask-a-threading-trap/
 - you have to set this config as some actual location (eg. in this repo)
 
+SQLite does not enforce foreign key constraints by default:
+https://stackoverflow.com/questions/31794195/how-to-correctly-add-foreign-key-constraints-to-sqlite-db-using-sqlalchemy
+
+Flask-Login - good example:  
+https://www.youtube.com/watch?v=2dEM-s3mRLE
+
+Flask-Login - get the current user (logged in):
+`from flask_login import current_user`
 
 ## Usage
 After cloning, start a virtual environment:
@@ -30,6 +38,7 @@ python3 -m venv venv
 pip install --upgrade pip
 pip install flask
 pip install flask-sqlalchemy
+pip install flask-login
 ```
 
 To run, use the `run.py` script:
@@ -38,6 +47,5 @@ To run, use the `run.py` script:
 ### Backend - examples
 See `examples.py` and run through the lines.
 
-## Up Next
-- routes
-- advanced usage
+## Todo
+- ???
